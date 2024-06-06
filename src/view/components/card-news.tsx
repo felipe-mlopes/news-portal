@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export function CardNews({ urlImage, title }: NewsProps) {
+export function CardNews({ slug, title, urlImage }: NewsProps) {
   const imageUrl = urlImage ?? "";
 
   return (
-    <Link href="#" className="max-w-60">
+    <Link href={`/news/${slug}`} className="max-w-60">
       <Image
         src={imageUrl}
         alt="Imagem da notícia"
