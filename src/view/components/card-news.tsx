@@ -1,23 +1,19 @@
 import Image from "next/image";
+import Link from "next/link";
 
-interface CardNewsProps {
-  urlImage: string | null;
-  title: string;
-  content: string;
-  author?: string;
-  publishedAt?: string;
-}
-
-export function CardNews({ urlImage, title, content }: CardNewsProps) {
+export function CardNews({ urlImage, title }: NewsProps) {
   const imageUrl = urlImage ?? "";
 
   return (
-    <div>
-      <Image src={imageUrl} alt="Imagem da notícia" height={200} width={200} />
-      <div>
-        <h2 className="text-2xl">{title}</h2>
-        <p className="text-sm">{content}</p>
-      </div>
-    </div>
+    <Link href="#" className="max-w-60">
+      <Image
+        src={imageUrl}
+        alt="Imagem da notícia"
+        height={200}
+        width={240}
+        className="rounded"
+      />
+      <strong className="text-xs hover:underline">{title}</strong>
+    </Link>
   );
 }
