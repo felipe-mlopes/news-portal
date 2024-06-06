@@ -1,13 +1,12 @@
-import { CategoryNews } from "@/view/components/category-news";
+import { Header } from "@/view/components/header";
 import { TrendingNews } from "@/view/components/trending-news";
+import { CategoryNews } from "@/view/components/category-news";
 
 export default function Home() {
   return (
-    <div className="h-screen space-y-10">
-      <header className="text-center">
-        <h1 className="text-4xl">Portal News</h1>
-      </header>
-      <main>
+    <div className="h-screen">
+      <Header />
+      <main className="flex flex-col lg:block">
         <TrendingNews />
         <div className="space-y-8">
           <CategoryNews category="política" />
