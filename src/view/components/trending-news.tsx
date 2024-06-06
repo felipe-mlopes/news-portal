@@ -22,8 +22,8 @@ export async function TrendingNews() {
   const todayFormat = today.locale("pt-br").format("DD/MMMM");
 
   return (
-    <section className="flex justify-between">
-      <div className="flex justify-center items-start gap-8">
+    <section className="flex flex-col lg:flex-row lg:justify-between px-8 md:px-16 lg:px-32 xl:px-64">
+      <div className="flex flex-col lg:flex-row lg:justify-center lg:items-start gap-8">
         <div>
           {trendingNews &&
             mainNews.map((item) => {
@@ -32,7 +32,10 @@ export async function TrendingNews() {
                   key={item.id}
                   urlImage={item.urlToImage}
                   title={item.title}
-                  content={item.description ?? ""}
+                  content={item.content ?? ""}
+                  description={item.description ?? ""}
+                  author={item.author}
+                  publishedAt={item.publishedAt}
                   slug={item.slug!}
                   h={600}
                   w={800}
@@ -48,6 +51,10 @@ export async function TrendingNews() {
                   key={item.id}
                   urlImage={item.urlToImage}
                   title={item.title}
+                  content={item.content ?? ""}
+                  description={item.description ?? ""}
+                  author={item.author}
+                  publishedAt={item.publishedAt}
                   slug={item.slug!}
                   h={200}
                   w={400}
@@ -64,7 +71,16 @@ export async function TrendingNews() {
           {trendingNews &&
             trendNews.map((item) => {
               return (
-                <ShortNews key={item.id} title={item.title} slug={item.slug!} />
+                <ShortNews
+                  key={item.id}
+                  urlImage={item.urlToImage}
+                  title={item.title}
+                  content={item.content ?? ""}
+                  description={item.description ?? ""}
+                  author={item.author}
+                  publishedAt={item.publishedAt}
+                  slug={item.slug!}
+                />
               );
             })}
         </div>
