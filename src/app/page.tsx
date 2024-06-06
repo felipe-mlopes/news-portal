@@ -1,13 +1,20 @@
+import { CategoryNews } from "@/view/components/category-news";
 import { TrendingNews } from "@/view/components/trending-news";
 
 export default function Home() {
   return (
-    <main className="h-screen">
-      <h1>Portal News</h1>
-      <div className="w-full">
-        <h2>Principais notícias</h2>
+    <div className="h-screen space-y-10">
+      <header className="text-center">
+        <h1 className="text-4xl">Portal News</h1>
+      </header>
+      <main>
         <TrendingNews />
-      </div>
-    </main>
+        <div className="space-y-8">
+          <CategoryNews category="política" />
+          <CategoryNews category="economia" />
+          <CategoryNews category="esportes" />
+        </div>
+      </main>
+    </div>
   );
 }
