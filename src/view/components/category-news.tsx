@@ -1,15 +1,18 @@
-"use client";
-
-import { useFetchTrendingNews } from "../hooks/use-fetch-trending-news";
+import { getTrendingNews } from "@/models/data-fetching/get-trending-news.model";
 import { CardNews } from "./card-news";
 
 interface CategoryNewsProps {
   category: string;
 }
 
-export function CategoryNews({ category }: CategoryNewsProps) {
-  const { trendingNews } = useFetchTrendingNews();
+export async function CategoryNews({ category }: CategoryNewsProps) {
+  const response = await getTrendingNews();
 
+  if (!response) {
+    return null;
+  }
+
+  const trendingNews = response.data.articles;
   const categoryNews = trendingNews.slice(0, 7);
 
   return (
@@ -23,6 +26,7 @@ export function CategoryNews({ category }: CategoryNewsProps) {
                 key={idx}
                 urlImage={item.urlToImage}
                 title={item.title}
+                slug={item.slug!}
               />
             );
           })}
