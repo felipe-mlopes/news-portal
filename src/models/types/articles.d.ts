@@ -10,4 +10,6 @@ export interface ArticlesTypes {
     urlToImage: string | null;
     publishedAt: string;
     content: string | null;
+    id?: string
+    slug?: string
   }
