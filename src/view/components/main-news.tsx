@@ -6,15 +6,22 @@ interface MainNewsProps extends NewsProps {
   w: number;
 }
 
-export function MainNews({ urlImage, title, content, h, w }: MainNewsProps) {
+export function MainNews({
+  urlImage,
+  title,
+  description,
+  slug,
+  h,
+  w,
+}: MainNewsProps) {
   const imageUrl = urlImage ?? "";
 
   return (
-    <Link href="#">
+    <Link href={`/news/${slug}`}>
       <Image src={imageUrl} alt="" height={h} width={w} className="rounded" />
       <div>
         <h3>{title}</h3>
-        <p>{content}</p>
+        <p className="hidden md:block">{description}</p>
       </div>
     </Link>
   );
