@@ -34,7 +34,7 @@ export default async function New({ params }: { params: { slug: string } }) {
           <ArrowIcon />
         </Link>
         <Link href={"/"} className="hover:underline">
-          Voltar a página inicial
+          Back to initial page
         </Link>
       </footer>
     </div>
