@@ -30,7 +30,7 @@ Na parte da View estão os componentes, o ícone utilizado e a utilidade da bibl
 
 - Models
   
-Já no Models concentrei os consumos da API pública (data fetching), as tipagens das respostas e uma função que gere **ID** e **Slug** únicos para cada notícia (já que o JSON consumido não apresenta esses dados). Com foco na experiência do usuário, as requisições foram feitas no server side com fetch e mantendo um cache com intervalo de 03 minutos. Além disso, utilizei a biblioteca **Zod** para tratar os possíveis erros das variáveis de ambiente da aplicação.
+Já no Models concentrei os consumos da API pública (data fetching), as tipagens das respostas e uma função que gere **ID** e **Slug** únicos para cada notícia (já que o JSON consumido não apresenta esses dados). Com foco na experiência do usuário, as requisições foram feitas no server side com fetch e mantendo um cache com intervalo de revalidação de 03 minutos. Além disso, utilizei a biblioteca **Zod** para tratar os possíveis erros das variáveis de ambiente da aplicação.
 
 ## Instalação
 
@@ -54,5 +54,4 @@ Já no Models concentrei os consumos da API pública (data fetching), as tipagen
 - Ajustar a responsividade
 - Melhorar a estilização
 - Tratamento dos erros das requisições
-
-
+  
