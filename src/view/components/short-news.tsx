@@ -4,14 +4,17 @@ import "dayjs/locale/pt-br";
 
 export function ShortNews({ title, publishedAt, slug }: NewsProps) {
   const dateNews = dayjs(publishedAt, { utc: true });
-  const dateNewsFormat = dateNews.locale("pt-br").format("HH:mm");
+  const dateNewsFormat = dateNews.locale("pt-br").format("HH[h]mm");
 
   return (
-    <div className="max-w-80">
+    <div className="lg:max-w-80">
       <Link href={`/news/${slug}`}>
         <span className="cursor-pointer hover:underline">{title}</span>
       </Link>{" "}
-      - {dateNewsFormat}
+      -{" "}
+      <span className="text-sm text-gray-500 font-medium">
+        {dateNewsFormat}
+      </span>
     </div>
   );
 }
