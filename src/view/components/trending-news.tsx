@@ -1,9 +1,10 @@
 import dayjs from "dayjs";
 import "dayjs/locale/pt-br";
 
+import { getTrendingNews } from "@/models/data-fetching/get-trending-news.model";
+
 import { MainNews } from "./main-news";
 import { ShortNews } from "./short-news";
-import { getTrendingNews } from "@/models/data-fetching/get-trending-news.model";
 
 export async function TrendingNews() {
   const response = await getTrendingNews();
@@ -16,14 +17,14 @@ export async function TrendingNews() {
 
   const mainNews = trendingNews.slice(0, 1);
   const mostRecentNews = trendingNews.slice(1, 3);
-  const trendNews = trendingNews.slice(3, 10);
+  const trendNews = trendingNews.slice(3, 8);
 
   const today = dayjs(new Date(), { utc: true });
-  const todayFormat = today.locale("pt-br").format("DD/MMMM");
+  const todayFormat = today.locale("en").format("DD/MM/YYYY");
 
   return (
-    <section className="flex flex-col lg:flex-row lg:justify-between px-8 md:px-16 lg:px-32 xl:px-64">
-      <div className="flex flex-col lg:flex-row lg:justify-center lg:items-start gap-8">
+    <section className="flex flex-col gap-12 px-8 sm:px-16 lg:flex-row lg:gap-8 lg:px-32 xl:gap-64">
+      <div className="flex flex-col lg:justify-center lg:items-start gap-12">
         <div>
           {trendingNews &&
             mainNews.map((item) => {
@@ -43,7 +44,7 @@ export async function TrendingNews() {
               );
             })}
         </div>
-        <div className="flex flex-col gap-4">
+        <div className="flex gap-8">
           {trendingNews &&
             mostRecentNews.map((item) => {
               return (
@@ -56,6 +57,7 @@ export async function TrendingNews() {
                   author={item.author}
                   publishedAt={item.publishedAt}
                   slug={item.slug!}
+                  isFeaturedNews={false}
                   h={200}
                   w={400}
                 />
@@ -63,10 +65,8 @@ export async function TrendingNews() {
             })}
         </div>
       </div>
-      <div className="space-y-8">
-        <h2 className="font-bold text-center">
-          Destaques do Dia - {todayFormat}
-        </h2>
+      <div className="space-y-4">
+        <h2 className="font-bold">Trending News - {todayFormat}</h2>
         <div className="space-y-4">
           {trendingNews &&
             trendNews.map((item) => {
