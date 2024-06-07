@@ -5,7 +5,10 @@ const nextConfig = {
             {
                 protocol: 'https',
                 hostname: 'ichef.bbci.co.uk',
-                port: '',
+            },
+            {
+                protocol: 'https',
+                hostname: 'm.files.bbci.co.uk'
             }
         ]
     }
