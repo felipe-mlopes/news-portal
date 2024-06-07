@@ -16,7 +16,7 @@ export function NewsDetails({
   const dateNewsFormat = dateNews.locale("pt-br").format("DD/MM/YYYY");
 
   return (
-    <main className="flex flex-col gap-4 md:pt-8 px-8 md:px-16 lg:px-32 xl:px-64 w-full">
+    <main className="flex flex-col gap-4 md:pt-8 px-8 md:px-16 lg:px-32 w-full">
       <h2 className="text-2xl md:text-[2rem] lg:text-4xl font-semibold">
         {title}
       </h2>
