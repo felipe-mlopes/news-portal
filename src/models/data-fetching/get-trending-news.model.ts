@@ -1,27 +1,12 @@
-'use server'
-
-import { randomUUID } from 'crypto'
-import slugify from 'slugify'
-
-import { api } from '../api';
 import { env } from "@/env";
 
-import { ArticlesTypes } from '../types/articles';
+import { api } from '../api';
+import { generateIdAndSlug } from '../generate-id-and-slug';
 
-interface TrendingNewsProps {
-  data: {
-    status: string;
-    totalResults: number;
-    articles: ArticlesTypes[];
-  }
-};
+import { TrendingNewsTypes } from '../types/trending-news';
 
-function generateIdAndSlug(article: ArticlesTypes) {
-  article.id = randomUUID()
-  article.slug = slugify(article.title, { lower: true })
-} 
 
-export async function getTrendingNews(): Promise<TrendingNewsProps | null> {
+export async function getTrendingNews(): Promise<TrendingNewsTypes | null> {
   const response = await api(
     '/v2/top-headlines?sources=bbc-news',
     {
@@ -29,6 +14,9 @@ export async function getTrendingNews(): Promise<TrendingNewsProps | null> {
       headers: {
         "Content-Type": "application/json",
         "Authorization": `${env.API_KEY}`,
+      },
+      next: {
+        revalidate: 3 * 60 * 1000 // 3 minutes
       },
     },
   );
